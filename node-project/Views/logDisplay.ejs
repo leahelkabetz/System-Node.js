@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Log Display</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+            color: #333;
+            text-align: center;
+        }
+        h1 {
+            font-size: 24px;
+            font-weight: bold;
+            color: rgb(24, 97, 88);
+
+            margin-bottom: 15px;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: left;
+        }
+        li {
+            background: #fff;
+            padding: 12px;
+            margin-bottom: 8px;
+            border-radius: 5px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+        }
+        li span {
+            font-weight: bold;
+            color: rgb(24, 97, 88);
+            margin-right: 10px;
+        }
+        .no-logs {
+            text-align: center;
+            color: #888;
+            font-style: italic;
+            padding: 15px;
+        }
+        .delete-form {
+            margin-top: 20px;
+        }
+        .delete-btn {
+            background-color: rgb(136, 220, 210);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+        .delete-btn:hover {
+            background-color: rgb(101, 177, 168);;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>System Logs</h1>
+        
+        <ul>
+            <% if (!logLines || logLines.trim() === '') { %>
+                <li class="no-logs">No logs available</li>
+            <% } else { %>
+                <% logLines.split('\n').filter(line => line.trim() !== '').forEach((line, index) => { %>
+                    <li>
+                        <span><%= index + 1 %>.</span>
+                        <%= line %>
+                    </li>
+                <% }); %>
+            <% } %>
+        </ul>
+
+        <form class="delete-form" action="/logs?_method=DELETE" method="post">
+            <button type="submit" class="delete-btn">Delete Logs</button>
+        </form>
+    </div>
+</body>
+</html>

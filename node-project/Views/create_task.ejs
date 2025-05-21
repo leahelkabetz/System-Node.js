@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Task</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7fc;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            width: 50%;
+            margin: 50px auto;
+            padding: 30px;
+            background-color: #ffffff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #1e3a8a;
+            margin-bottom: 20px;
+        }
+        label {
+            font-size: 16px;
+            color: #333;
+            margin-bottom: 8px;
+            display: block;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            box-sizing: border-box;
+            font-size: 16px;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+        input[type="text"]:focus::placeholder {
+            opacity: 0;
+        }
+        input[type="text"]::placeholder {
+            color: #aaa;
+            opacity: 1;
+            transition: opacity 0.3s ease;
+        }
+        .btn-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        button[type="submit"] {
+            background-color: #1e3a8a;
+            color: white;
+            border: none;
+            padding: 12px 30px;  
+            font-size: 16px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: auto;  
+        }
+        button[type="submit"]:hover {
+            background-color: #2563eb;
+        }
+        .form-container {
+            width: 100%;
+            margin-top: 30px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Create a New Task</h1>
+
+        <form action="/tasks/add" method="POST">
+            <input type="text" id="title" name="title" placeholder="Enter the task title" required><br><br>
+
+            <input type="hidden" name="status" value="incomplete">
+
+            <div class="btn-container">
+                <button type="submit">Add Task</button>
+            </div>
+        </form>
+    </div>
+
+</body>
+</html>
